@@ -1,0 +1,24 @@
+name: Run RustDesk on Windows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-rustdesk:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Windows 10 - RustDesk script
+        run: |
+          echo "Starting RustDesk script..."
+          cmd /c "Windows 10 - RustDesk.bat"
+
+      # لو عندك سكربت Python مرتبط ممكن تشغله كمان
+      - name: Run Python login script
+        run: python login.py
+        shell: python
